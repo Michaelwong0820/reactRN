@@ -1,0 +1,4 @@
+export default {
+    TYPE_DATA_WEATHER:'TYPE_DATA_WEATHER',
+    NET_WEATHER:'NET_WEATHER'
+}
