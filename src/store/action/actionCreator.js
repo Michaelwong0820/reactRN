@@ -1,6 +1,10 @@
-import {actionWeather,actionWeatherData} from './weather'
+import {actionWeather,actionWeatherData,actionWeatherFresh} from './weather'
+import {actionNewsData,actionNewsFresh} from './news'
 
 export default {
     actionWeather,
-    actionWeatherData
+    actionWeatherData,
+    actionWeatherFresh,
+    actionNewsData,
+    actionNewsFresh
 }

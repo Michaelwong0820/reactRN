@@ -13,6 +13,13 @@ export function actionNetWeather (data)  {
     }
 }
 
+export function actionWeatherFresh (data) {
+    return {
+        type:TYPE.TYPE_EATHER_FRESH,
+        data
+    }
+}
+
 export function actionWeatherData (city) {
     return (dispatch)=> {
         const urlEncode = encodeURI(city)
@@ -20,7 +27,7 @@ export function actionWeatherData (city) {
         fetch(url)
         .then(response=>{
             if(response.ok) {
-                return response.text()
+                return response.json()
             }
             throw new Error('network in error')
         })

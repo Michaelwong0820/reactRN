@@ -2,7 +2,6 @@ import React from 'react'
 import {View,Text,Button,TextInput,StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
 import actionCreators from '../../store/action/actionCreator'
-console.log(actionCreators);
 class ReactRedux extends React.Component {
     constructor(props) {
         super(props)
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
 })
 const mapStateToProp = (state)=> {
     return {
-        weather:state.weather
+        weather:state.weatherReducer.weather
     }
 }
 const mapDispatchToProp = (dispatch) => {

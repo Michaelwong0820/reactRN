@@ -1,6 +1,10 @@
 import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import TopPage from '../main/TopScreen'
+// import TopPage from '../main/TopScreen'
+import TopScreen1 from '../main/newsScreen/TopScreen1'
+import TopScreen2 from '../main/newsScreen/TopScreen2'
+import TopScreen3 from '../main/newsScreen/TopScreen3'
+import TopScreen4 from '../main/newsScreen/TopScreen4'
 
 const TopTab = createMaterialTopTabNavigator()
 
@@ -18,10 +22,10 @@ class TopScreen extends React.Component {
                 }
             }}
             >
-                <TopTab.Screen name="Top1" component={TopPage} />
-                <TopTab.Screen name="Top2" component={TopPage} />
-                <TopTab.Screen name="Top3" component={TopPage} />
-                <TopTab.Screen name="Top4" component={TopPage} />
+                <TopTab.Screen name="Top" component={TopScreen1} />
+                <TopTab.Screen name="社会" component={TopScreen2} />
+                <TopTab.Screen name="国内" component={TopScreen3} />
+                <TopTab.Screen name="国际" component={TopScreen4} />
             </TopTab.Navigator>
         )
     }
