@@ -10,6 +10,7 @@ import ModeScreen from '../main/Mode'
 import AsyncStorageScreen from '../main/AsyncStorage'
 import ReduxScreen from '../main/ReduxDemo'
 import ReactRedux from '../main/React-redux'
+import NewsDetail from '../main/newsScreen/newsDetail'
 
 const Stack = createStackNavigator()
 const MainStack = createStackNavigator()
@@ -22,7 +23,7 @@ const MainStackScreen = () => {
                 name="home"
                 component={HomeScreen}
                 options={{
-                    headerShown:false
+                    headerShown: false
                 }}
             />
             <MainStack.Screen
@@ -41,6 +42,10 @@ const MainStackScreen = () => {
                 name="reactRedux"
                 component={ReactRedux}
             />
+            <MainStack.Screen
+                name="newsDetail"
+                component={NewsDetail}
+            />
         </MainStack.Navigator>
     )
 }
@@ -48,14 +53,14 @@ const MainStackScreen = () => {
 const RootStackScreen = () => {
     return (
         <RootStack.Navigator mode="modal">
-            <RootStack.Screen 
+            <RootStack.Screen
                 name="main"
                 component={MainStackScreen}
                 options={{
-                    headerShown:false
+                    headerShown: false,
                 }}
             />
-            <RootStack.Screen 
+            <RootStack.Screen
                 name="mode"
                 component={ModeScreen}
             />
@@ -73,20 +78,20 @@ class App extends React.Component {
     }
     render() {
         return (
-                <Stack.Navigator>
-                    {this.state.isLogin ? (
-                        <Stack.Screen name="Welcome" component={WelcomeScreen} />
-                    ) : (
-                            this.state.userToken == null ? (
-                                <>
-                                    <Stack.Screen name="Login" component={LoginScreen} />
-                                    <Stack.Screen name="Resit" component={ResitScreen} />
-                                </>
-                            ) : (
-                                    <Stack.Screen name="Root" component={RootStackScreen} />
-                                )
-                        )}
-                </Stack.Navigator>
+            <Stack.Navigator >
+                {this.state.isLogin ? (
+                    <Stack.Screen name="Welcome" component={WelcomeScreen} />
+                ) : (
+                        this.state.userToken == null ? (
+                            <>
+                                <Stack.Screen name="Login" component={LoginScreen} />
+                                <Stack.Screen name="Resit" component={ResitScreen} />
+                            </>
+                        ) : (
+                                <Stack.Screen name="Root" component={RootStackScreen} />
+                            )
+                    )}
+            </Stack.Navigator>
         )
     }
 }

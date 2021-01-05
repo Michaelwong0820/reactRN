@@ -1,16 +1,13 @@
 import React from 'react'
-import { View, Text} from 'react-native'
+import TopCommonScreen from './TopScreen'
 
-
-class TopScreen extends React.Component {
+class TopScreen3 extends React.Component {
     render() {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-               <Text>page1</Text>
-            </View>
+            <TopCommonScreen initCategory="guonei"></TopCommonScreen>
         )
     }
 }
 
-export default TopScreen
+export default TopScreen3
 

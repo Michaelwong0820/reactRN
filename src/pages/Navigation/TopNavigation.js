@@ -22,7 +22,7 @@ class TopScreen extends React.Component {
                 }
             }}
             >
-                <TopTab.Screen name="Top" component={TopScreen1} />
+                <TopTab.Screen name="头条" component={TopScreen1} />
                 <TopTab.Screen name="社会" component={TopScreen2} />
                 <TopTab.Screen name="国内" component={TopScreen3} />
                 <TopTab.Screen name="国际" component={TopScreen4} />
