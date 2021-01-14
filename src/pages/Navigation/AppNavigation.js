@@ -7,10 +7,12 @@ import ResitScreen from '../Login/Resit'
 import HomeScreen from '../Navigation/BottomNavigation'
 import FetchScreen from '../main/FetchMemo'
 import ModeScreen from '../main/Mode'
+import Touchable from '../main/Touchable'
 import AsyncStorageScreen from '../main/AsyncStorage'
 import ReduxScreen from '../main/ReduxDemo'
 import ReactRedux from '../main/React-redux'
 import NewsDetail from '../main/newsScreen/newsDetail'
+import BookList from '../main/bookScreen/BookList'
 
 const Stack = createStackNavigator()
 const MainStack = createStackNavigator()
@@ -23,28 +25,57 @@ const MainStackScreen = () => {
                 name="home"
                 component={HomeScreen}
                 options={{
-                    headerShown: false
+                    headerShown: true
                 }}
             />
             <MainStack.Screen
                 name="fetch"
                 component={FetchScreen}
+                options={{
+                    headerShown: true
+                }}
             />
             <MainStack.Screen
                 name="asyncStorage"
                 component={AsyncStorageScreen}
+                options={{
+                    headerShown: true
+                }}
             />
             <MainStack.Screen
                 name="redux"
                 component={ReduxScreen}
+                options={{
+                    headerShown: true
+                }}
             />
             <MainStack.Screen
                 name="reactRedux"
                 component={ReactRedux}
+                options={{
+                    headerShown: true
+                }}
             />
             <MainStack.Screen
                 name="newsDetail"
                 component={NewsDetail}
+                options={{
+                    headerShown: true
+                }}
+            />
+            <MainStack.Screen
+                name="touchable"
+                component={Touchable}
+                options={{
+                    headerShown: true
+                }}
+            />
+            <MainStack.Screen
+                name="bookList"
+                component={BookList}
+                options={{
+                    headerShown: true
+                }}
             />
         </MainStack.Navigator>
     )
@@ -57,7 +88,7 @@ const RootStackScreen = () => {
                 name="main"
                 component={MainStackScreen}
                 options={{
-                    headerShown: false,
+                    headerShown: false
                 }}
             />
             <RootStack.Screen
@@ -72,7 +103,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLogin: false,
+            isLogin: true,
             userToken: 'ss'
         }
     }
@@ -88,11 +119,20 @@ class App extends React.Component {
                                 <Stack.Screen name="Resit" component={ResitScreen} />
                             </>
                         ) : (
-                                <Stack.Screen name="Root" component={RootStackScreen} />
+                                <Stack.Screen name="Root" component={RootStackScreen} options={{
+                                    headerShown: false
+                                }}/>
                             )
                     )}
             </Stack.Navigator>
         )
+    }
+    componentDidMount() {
+        setTimeout(()=>{
+            this.setState({
+                isLogin:false
+            })
+        },3000)
     }
 }
 

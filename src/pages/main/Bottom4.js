@@ -18,6 +18,12 @@ class Page4Screen extends React.Component {
                         this.props.navigation.navigate('reactRedux')
                     }}
                 />
+                <Button 
+                    title="goTouchable"
+                    onPress={()=>{
+                        this.props.navigation.navigate('touchable')
+                    }}
+                />
             </View>
         )
     }

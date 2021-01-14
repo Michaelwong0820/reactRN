@@ -11,6 +11,10 @@ const defaultState = {
     guonei: {
         newsData: null,
         isFresh: false
+    },
+    guoji: {
+        newsData: null,
+        isFresh: false
     }
 }
 const newsReducers = (state = defaultState, action) => {

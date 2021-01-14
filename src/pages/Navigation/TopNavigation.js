@@ -5,6 +5,7 @@ import TopScreen1 from '../main/newsScreen/TopScreen1'
 import TopScreen2 from '../main/newsScreen/TopScreen2'
 import TopScreen3 from '../main/newsScreen/TopScreen3'
 import TopScreen4 from '../main/newsScreen/TopScreen4'
+import TopCommonScreen from '../main/newsScreen/TopScreen'
 
 const TopTab = createMaterialTopTabNavigator()
 

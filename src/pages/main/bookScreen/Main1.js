@@ -4,37 +4,38 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
 import actionCreator from '../../../store/action/actionCreator'
 
-var initCategory = 'guoji'
+var initCategory = 'top'
 
-class TopScreen4 extends React.PureComponent {
+class TopScreen1 extends React.PureComponent {
     componentDidMount() {
-        const { getNewsData } = this.props
-        getNewsData(initCategory)
+        const { getBookData } = this.props
+        getBookData()
     }
     goToDetail=(item)=> {
-        // alert(item.url)
-        this.props.navigation.navigate('newsDetail',{
-            url:item.url
+        // alert(item)
+        this.props.navigation.navigate('bookList',{
+            categoryId:item.id
         })
     }
     _renderItem = ({ item, index }) => {
         return (
           <ListItem item={item} onPressItem={()=>{this.goToDetail(item)}}/>
+        // <Text>{item.catalog}</Text>
 
         )
     }
     reloadData = () => {
-        const { getNewsData, changeFresh } = this.props
-        changeFresh(true,initCategory)
-        getNewsData(initCategory)
+        const { getBookData, changeFresh } = this.props
+        changeFresh(true)
+        getBookData()
     }
     render() {
-        const { newsData, isFreshing } = this.props
-        if (newsData) {
+        const { bookData, isFreshing } = this.props
+        if (bookData) {
             return (
                 <View style={styles.container}>
                     <FlatList
-                        data={newsData && newsData.result.data}
+                        data={bookData && bookData.result}
                         keyExtractor={(item) => {
                             return item.uniquekey
                         }}
@@ -69,7 +70,8 @@ class ListItem extends React.PureComponent{
             }}
         >
             <View style={styles.content}>
-                <View style={styles.itemGroup1}><Text>{item.title}</Text></View>
+                <Text>{item.catalog}</Text>
+                {/* <View style={styles.itemGroup1}><Text>{item.title}</Text></View>
                 <View style={styles.itemGroup2}>
                     <Text style={{ marginRight: 10 }}>日期：{item.date}</Text>
                     <Text>作者：{item.author_name}</Text>
@@ -78,7 +80,7 @@ class ListItem extends React.PureComponent{
                     <Image source={{ uri: item.thumbnail_pic_s }} style={styles.itemImage} />
                     <Image source={{ uri: item.thumbnail_pic_s02 }} style={styles.itemImage} />
                     <Image source={{ uri: item.thumbnail_pic_s03 }} style={styles.itemImage} />
-                </View>
+                </View> */}
             </View>
         </TouchableOpacity>
         )
@@ -87,18 +89,18 @@ class ListItem extends React.PureComponent{
 
 function mapStateToProps(state) {
     return {
-        newsData: state.newsReducers[initCategory].newsData,
-        isFreshing: state.newsReducers[initCategory].isFresh
+        bookData: state.bookReducer.bookData,
+        isFreshing: state.bookReducer.isFresh
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        getNewsData(type) {
-            dispatch(actionCreator.actionNewsData(type))
+        getBookData() {
+            dispatch(actionCreator.actionBookAsync())
         },
-        changeFresh(data,category) {
-            dispatch(actionCreator.actionNewsFresh(data,category))
+        changeFresh(data) {
+            dispatch(actionCreator.actionBookFresh(data))
         }
     }
 }
@@ -114,8 +116,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         backgroundColor: '#fff',
         alignItems: "flex-start",
-        justifyContent: "center"
-
+        justifyContent: "center",
+        width:350
     },
     itemGroup1: {
         flex: 1,
@@ -140,10 +142,10 @@ const styles = StyleSheet.create({
     }
 })
 
-const TopCommonScreen4 = connect(
+const TopCommonScreen1 = connect(
     mapStateToProps,
     mapDispatchToProps
-)(TopScreen4)
+)(TopScreen1)
 
-export default TopCommonScreen4
+export default TopCommonScreen1
 

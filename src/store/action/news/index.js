@@ -16,6 +16,7 @@ export function actionNewsFresh (data,category)  {
 }
 
 export function actionNewsData (category) {
+    console.log('---',category);
     return (dispatch)=> {
 
         const url = `http://v.juhe.cn/toutiao/index?type=${category}&key=25c017e18f559ef538308b1c2a891f23`

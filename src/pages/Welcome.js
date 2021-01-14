@@ -8,6 +8,11 @@ class WelcomeScreen extends React.Component {
             </View>
         )
     }
+    componentDidMount(){
+        setTimeout(()=>{
+            this.props.navigation.navigate('root')
+        },3000)
+    }
 }
 
 export default WelcomeScreen
